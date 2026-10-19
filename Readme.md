@@ -22,12 +22,66 @@ or anywhere via the internet.
 
 ## Working flow
 
-```mermaid
-flowchart TD
-    A["Dockerfile created by Developer"] --> B["Docker Daemon reads instructions"]
-    B --> C["Executes instructions one by one"]
-    C --> D["Docker Image Created"]
-    D --> E["Create Docker Container Instances"]
-    E --> F["Make changes inside containers"]
-    F -.-> G["Original Image remains unchanged"]
 ```
+Dockerfile (Created by Developer)
+            |
+            v
+Docker Daemon (Reads Instructions)
+            |
+            v
+Executes Instructions One by One
+            |
+            v
+      Docker Image Created
+            |
+            v
+  Docker Container Instances Created
+            |
+            v
+    Make Changes in Containers
+            |
+            v
+  Original Docker Image Unchanged
+  ```
+
+  ## How to make a docker image and how to make a Docker cointainer
+
+**1 - Create **dockerfile****
+   create a file named **```Dockerfile```** 
+   write instructions into that file.
+
+   for example : 
+   ```
+   FROM ubuntu:24.04
+   RUN apt-get update && apt-get install -y curl
+   CMD ["bash"]
+   ```
+   **FROM** - specifies the base image that we need to use, for example here we need Linux to run our application but to use that we need to
+   have that image
+   **RUN** - the command to run inside the linux environment 
+   **CMD** - changes the shell from /bin/sh to bash shell.
+
+
+   **2 - Build the Docker image**
+
+   ```
+   docker build -t my-image .
+   ```
+   **```docker build```** -  builds an image. 
+   **```-t ```** - assigns the name for the image. (in current directory)
+
+   **3 - Create and Run a Docker Container** 
+   ```
+   docker run -it --name my-container my-image
+   ```
+   **```-it```** - gives a temp terminal(linux terminal or command prompt based on the application or image created using dockerfile)
+   **```--name```** - assigns name to that docker container from the specified image.
+
+   **Usable tools**
+
+   **```docker images```** - to list all the images available 
+   **``docker ps``** - to check containers running 
+   **``docker stop <container_id_or_name>``**  - to stop container.
+   **``docker restart <container_id_or_name>``**  - to restart container.
+   **``docker rm <container_id_or_name>``**  - to remove container ( can use -f flag to force remove).
+
