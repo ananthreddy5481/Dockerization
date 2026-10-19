@@ -77,7 +77,7 @@ Executes Instructions One by One
    **```-it```** - gives a temp terminal(linux terminal or command prompt based on the application or image created using dockerfile)
    **```--name```** - assigns name to that docker container from the specified image.
 
-   **Usable tools**
+   **Usable commands**
 
    **```docker images```** - to list all the images available 
    **``docker ps``** - to check containers running 
